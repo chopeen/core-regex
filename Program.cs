@@ -7,9 +7,6 @@ namespace foo
     {
         static void Main(string[] args)
         {
-            // ^[\w,&\- ]+$
-            // https://www.w3.org/TR/xsd-unicode-blocknames/
-            // \p{IsBasicLatin}
             string[] groups = 
             {
                 @"A-Za-z",                  // letters
@@ -17,6 +14,8 @@ namespace foo
                 @"&.,\- ",                  // selected punctuation
                 @"\p{IsLatin-1Supplement}"  // Sigur Rós and more - https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)
             };
+            // for other blocks, see https://www.w3.org/TR/xsd-unicode-blocknames/
+
             string pattern = "^[" + string.Join("", groups) + "]+$";
             string[] names = { "alpha", "Pink Floyd", "Sigur Rós", "Stone Temple Pilots", "Angus & Foo", "ABBA", "Aaa, Bbb", "123", "aa-bb", "aa<bb" };
 
